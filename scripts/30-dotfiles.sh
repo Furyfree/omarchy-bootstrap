@@ -34,5 +34,4 @@ while IFS= read -r dir || [ -n "$dir" ]; do
   fi
 done < "$LIST"
 
-
 echo "==> [30] Dotfiles stow complete"
