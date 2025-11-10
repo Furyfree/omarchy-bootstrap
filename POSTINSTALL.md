@@ -36,6 +36,17 @@ This covers remaining manual steps for Helium, Zed, JetBrains, and VPN configura
 
 ---
 
+## Limine (If Dualboot)
+
+If you dual-boot with Windows, you need to add the Windows EFI entry to the Limine boot menu:
+
+```bash
+sudo limine-scan
+```
+Select the Windows Boot Manager entry (usually option 1) to add it to Limine.
+
+---
+
 ## VPN Configuration
 
 **Proton VPN:**
