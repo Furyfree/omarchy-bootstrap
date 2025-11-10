@@ -6,7 +6,7 @@ echo "==> [40] Setting up Hyprland overrides"
 HYPRLAND_CONFIG="$HOME/.config/hypr/hyprland.conf"
 OVERRIDES_SRC="$HOME/git/dotfiles-2.0/hyprland/.config/hypr/overrides.conf"
 OVERRIDES_DST="$HOME/.config/hypr/overrides.conf"
-SOURCE_LINE="source = $OVERRIDES_DST"
+SOURCE_LINE="source = ~/.config/hypr/overrides.conf"
 
 # Ensure Hyprland config exists
 if [ ! -f "$HYPRLAND_CONFIG" ]; then
