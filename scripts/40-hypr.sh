@@ -4,8 +4,7 @@ set -e
 echo "==> [40] Setting up Hyprland overrides"
 
 HYPRLAND_CONFIG="$HOME/.config/hypr/hyprland.conf"
-SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
-OVERRIDES_CONFIG="$SCRIPT_DIR/hyprland-overrides.conf"
+OVERRIDES_CONFIG="$HOME/git/dotfiles-2.0/hyprland/.config/overrides.conf"
 SOURCE_LINE="source = $OVERRIDES_CONFIG"
 
 # Check if Hyprland config exists
