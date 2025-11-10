@@ -4,21 +4,26 @@ set -e
 echo "==> [40] Setting up Hyprland overrides"
 
 HYPRLAND_CONFIG="$HOME/.config/hypr/hyprland.conf"
-OVERRIDES_CONFIG="$HOME/git/dotfiles-2.0/hyprland/.config/hypr/overrides.conf"
-SOURCE_LINE="source = $OVERRIDES_CONFIG"
+OVERRIDES_SRC="$HOME/git/dotfiles-2.0/hyprland/.config/hypr/overrides.conf"
+OVERRIDES_DST="$HOME/.config/hypr/overrides.conf"
+SOURCE_LINE="source = $OVERRIDES_DST"
 
-# Check if Hyprland config exists
+# Ensure Hyprland config exists
 if [ ! -f "$HYPRLAND_CONFIG" ]; then
     echo "Error: Hyprland config not found at $HYPRLAND_CONFIG"
-    echo "Please install Hyprland first."
     exit 1
 fi
 
-# Check if overrides config exists
-if [ ! -f "$OVERRIDES_CONFIG" ]; then
-    echo "Error: Overrides config not found at $OVERRIDES_CONFIG"
+# Ensure overrides source exists
+if [ ! -f "$OVERRIDES_SRC" ]; then
+    echo "Error: Overrides config not found at $OVERRIDES_SRC"
     exit 1
 fi
+
+# Copy or update overrides.conf
+echo "--> Copying overrides.conf to Hyprland config directory"
+mkdir -p "$HOME/.config/hypr"
+cp "$OVERRIDES_SRC" "$OVERRIDES_DST"
 
 # Add source line if missing
 if grep -Fxq "$SOURCE_LINE" "$HYPRLAND_CONFIG"; then
