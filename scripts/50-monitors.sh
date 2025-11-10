@@ -5,7 +5,7 @@ echo "==> [50] Setting monitor configuration"
 
 HYPR_DIR="$HOME/.config/hypr"
 MON_DIR="$HYPR_DIR/monitors"
-REPO_MON_DIR="$HOME/git/dotfiles-2.0/hyprland/.config/hypr/monitors"
+REPO_MON_DIR="$HOME/git/dotfiles/hyprland/.config/hypr/monitors"
 mkdir -p "$MON_DIR"
 
 # Symlink laptop.conf and desktop.conf directly from repo

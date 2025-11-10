@@ -5,7 +5,7 @@ echo "==> Omarchy Bootstrap Starting"
 
 GIT_DIR="$HOME/git"
 BOOTSTRAP_REPO="https://github.com/Furyfree/omarchy-bootstrap.git"
-DOTFILES_REPO="https://github.com/Furyfree/dotfiles-2.0.git"
+DOTFILES_REPO="https://github.com/Furyfree/dotfiles.git"
 
 mkdir -p "$GIT_DIR"
 
@@ -18,13 +18,13 @@ else
     git -C "$GIT_DIR/omarchy-bootstrap" pull
 fi
 
-# --- Clone dotfiles-2.0 ---
-if [ ! -d "$GIT_DIR/dotfiles-2.0/.git" ]; then
-    echo "--> Cloning dotfiles-2.0 into $GIT_DIR"
-    git clone "$DOTFILES_REPO" "$GIT_DIR/dotfiles-2.0"
+# --- Clone dotfiles ---
+if [ ! -d "$GIT_DIR/dotfiles/.git" ]; then
+    echo "--> Cloning dotfiles into $GIT_DIR"
+    git clone "$DOTFILES_REPO" "$GIT_DIR/dotfiles"
 else
-    echo "--> dotfiles-2.0 already exists, pulling latest changes"
-    git -C "$GIT_DIR/dotfiles-2.0" pull
+    echo "--> dotfiles already exists, pulling latest changes"
+    git -C "$GIT_DIR/dotfiles" pull
 fi
 
 # --- Run the bootstrap install sequence ---

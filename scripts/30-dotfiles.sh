@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-DOTFILES="$HOME/git/dotfiles-2.0"
+DOTFILES="$HOME/git/dotfiles"
 LIST="$PWD/dotfiles.txt"
 
 echo "==> [30] Stowing dotfiles from $DOTFILES"
