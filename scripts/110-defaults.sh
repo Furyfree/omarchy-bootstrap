@@ -15,12 +15,6 @@ fi
 echo "--> Setting Helium Browser as default"
 xdg-settings set default-web-browser helium-browser.desktop || true
 
-# --- Reload Hyprland if available ---
-if command -v hyprctl >/dev/null 2>&1; then
-    echo "--> Reloading Hyprland configuration"
-    hyprctl reload || true
-fi
-
 # --- Add Widevine DRM support for Helium ---
 echo "--> Adding Widevine DRM support for Helium Browser"
 if [ -d /usr/lib/chromium/WidevineCdm ] && [ -d /opt/helium-browser-bin ]; then
@@ -28,6 +22,18 @@ if [ -d /usr/lib/chromium/WidevineCdm ] && [ -d /opt/helium-browser-bin ]; then
     echo "   Symlink created successfully"
 else
     echo "   WidevineCdm or Helium browser directory missing; skipping DRM link"
+fi
+
+# --- Set theme to catppuccin ---
+if command -v omarchy-theme-set >/dev/null 2>&1; then
+    echo "--> Setting theme to catppuccin"
+    omarchy-theme-set catppuccin
+fi
+
+# --- Reload Hyprland if available ---
+if command -v hyprctl >/dev/null 2>&1; then
+    echo "--> Reloading Hyprland configuration"
+    hyprctl reload || true
 fi
 
 echo "==> [110] Default application setup complete"
