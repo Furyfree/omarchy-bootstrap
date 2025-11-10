@@ -21,7 +21,7 @@ done
 HOST="$(hostname | tr '[:upper:]' '[:lower:]')"
 
 case "$HOST" in
-  arctop)
+  archtop)
     echo "--> Detected host: archtop"
     ln -sf "$MON_DIR/desktop.conf" "$MON_DIR/current.conf"
     ;;
