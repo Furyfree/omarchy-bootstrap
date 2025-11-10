@@ -11,7 +11,13 @@ if [ ! -f "$LIST" ]; then
   exit 1
 fi
 
-sudo pacman -Rns 1password-beta --noconfirm
+# Check if 1password-beta is installed
+if pacman -Qi 1password-beta >/dev/null 2>&1; then
+  echo "--> Removing 1password-beta"
+  sudo pacman -Rns 1password-beta --noconfirm
+else
+  echo "--> 1password-beta is not installed, skipping removal"
+fi
 
 while IFS= read -r pkg || [ -n "$pkg" ]; do
   # Skip empty lines and comments
