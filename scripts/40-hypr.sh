@@ -19,23 +19,22 @@ if [ ! -f "$DOTFILES/hyprland/.config/hypr/overrides.conf" ]; then
     exit 1
 fi
 
-echo "--> Deploying overrides with stow"
-cd "$DOTFILES"
+echo "--> Deploying overrides with symlinks"
 
 # Check if overrides.conf already exists in the target directory
 if [ ! -f "$HOME/.config/hypr/overrides.conf" ]; then
-    echo "--> Stowing overrides.conf"
-    stow -R -t "$HOME" --no-folding hyprland/.config/hypr/overrides.conf
+    echo "--> Creating symlink for overrides.conf"
+    ln -s "$DOTFILES/hyprland/.config/hypr/overrides.conf" "$HOME/.config/hypr/overrides.conf"
 else
-    echo "--> overrides.conf already exists, skipping stow"
+    echo "--> overrides.conf already exists, skipping symlink"
 fi
 
 # Check if overrides.d directory exists in the target directory
 if [ ! -d "$HOME/.config/hypr/overrides.d" ]; then
-    echo "--> Stowing overrides.d"
-    stow -R -t "$HOME" --no-folding hyprland/.config/hypr/overrides.d
+    echo "--> Creating symlink for overrides.d"
+    ln -s "$DOTFILES/hyprland/.config/hypr/overrides.d" "$HOME/.config/hypr/overrides.d"
 else
-    echo "--> overrides.d already exists, skipping stow"
+    echo "--> overrides.d already exists, skipping symlink"
 fi
 
 # Add source line to hyprland.conf if missing
