@@ -11,6 +11,8 @@ if [ ! -f "$LIST" ]; then
   exit 1
 fi
 
+sudo pacman -Rns 1password-beta --noconfirm
+
 while IFS= read -r pkg || [ -n "$pkg" ]; do
   # Skip empty lines and comments
   case "$pkg" in
