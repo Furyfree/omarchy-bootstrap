@@ -74,5 +74,6 @@ for svc in iwd systemd-networkd wpa_supplicant NetworkManager; do
     fi
 done
 
+sleep 10
 echo "--> Current backend: $(detect_backend)"
 echo "==> [70] Netstack configuration complete"
