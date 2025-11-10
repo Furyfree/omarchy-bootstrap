@@ -22,11 +22,23 @@ fi
 echo "--> Deploying overrides with stow"
 cd "$DOTFILES"
 
-# Stow only overrides.conf and overrides.d (no other Hyprland files)
-stow -R -t "$HOME" --no-folding hyprland/.config/hypr/overrides.conf
-stow -R -t "$HOME" --no-folding hyprland/.config/hypr/overrides.d
+# Check if overrides.conf already exists in the target directory
+if [ ! -f "$HOME/.config/hypr/overrides.conf" ]; then
+    echo "--> Stowing overrides.conf"
+    stow -R -t "$HOME" --no-folding hyprland/.config/hypr/overrides.conf
+else
+    echo "--> overrides.conf already exists, skipping stow"
+fi
 
-# Add source line if missing
+# Check if overrides.d directory exists in the target directory
+if [ ! -d "$HOME/.config/hypr/overrides.d" ]; then
+    echo "--> Stowing overrides.d"
+    stow -R -t "$HOME" --no-folding hyprland/.config/hypr/overrides.d
+else
+    echo "--> overrides.d already exists, skipping stow"
+fi
+
+# Add source line to hyprland.conf if missing
 if grep -Fxq "$SOURCE_LINE" "$HYPRLAND_CONFIG"; then
     echo "--> Source line already present"
 else
