@@ -34,4 +34,13 @@ while IFS= read -r dir || [ -n "$dir" ]; do
   fi
 done < "$LIST"
 
+# rebuild bat cache if bat is available
+if command -v bat >/dev/null 2>&1; then
+  echo "--> Rebuilding bat cache"
+  bat cache --clear
+  bat cache --build
+else
+  echo "--> bat not installed, skipping cache rebuild"
+fi
+
 echo "==> [30] Dotfiles stow complete"

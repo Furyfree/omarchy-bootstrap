@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+echo "==> [10] Setting default shell to zsh"
+
+if [ "$SHELL" != "/bin/zsh" ]; then
+  if command -v zsh >/dev/null 2>&1; then
+    chsh -s "$(command -v zsh)"
+    echo "--> Default shell changed to zsh (log out and in again)"
+  else
+    echo "Error: zsh not found, installing..."
+    sudo pacman -S --noconfirm zsh
+    chsh -s "$(command -v zsh)"
+  fi
+else
+  echo "--> Shell is already zsh"
+fi
