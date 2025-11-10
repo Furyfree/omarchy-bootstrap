@@ -1,5 +1,4 @@
 bat
-git
 starship
 tmux
 wlogout
