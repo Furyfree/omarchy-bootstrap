@@ -47,4 +47,4 @@ do
     fi
 done
 
-echo "==> [100] Desktop entry setup complete"
+echo "==> [90] Desktop entry setup complete"
