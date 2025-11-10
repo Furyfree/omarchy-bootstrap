@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [110] Adding Helium to 1Password trusted browsers"
+echo "==> [100] Adding Helium to 1Password trusted browsers"
 
 # Compute repo root (one level up from scripts/)
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && cd .. && pwd)"
@@ -19,4 +19,4 @@ printf "helium-browser\n" | sudo tee /etc/1password/custom_allowed_browsers >/de
 echo "--> 1Password trusted browsers updated"
 
 
-echo "==> [110] 1Password trust setup complete"
+echo "==> [100] 1Password trust setup complete"

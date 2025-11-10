@@ -13,12 +13,12 @@ echo "==> Running Omarchy Bootstrap"
 ./scripts/40-hypr.sh
 ./scripts/50-monitors.sh
 ./scripts/60-amd.sh
-./scripts/70-netstack.sh
-./scripts/80-dev.sh
-./scripts/90-desktop-entries.sh
-./scripts/100-certs.sh
-./scripts/110-trusted-1password.sh
-./scripts/120-defaults.sh
+./scripts/70-dev.sh
+./scripts/80-desktop-entries.sh
+./scripts/90-certs.sh
+./scripts/100-trusted-1password.sh
+./scripts/110-defaults.sh
+./scripts/120-netstack.sh
 
 # Reload Hyprland if available
 if command -v hyprctl >/dev/null 2>&1; then
@@ -26,5 +26,5 @@ if command -v hyprctl >/dev/null 2>&1; then
 fi
 
 echo "==> Omarchy Bootstrap Complete"
-echo "PLEASE REBOOT FOR EVERYTHING TO TAKE EFFECT"
+echo "PLEASE REBOOT FOR EVERYTHING TO TAKE EFFECT AND CONNECT TO THE WIFI AGAIN"
 echo "READ POSTINSTALL.MD"

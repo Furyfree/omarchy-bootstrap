@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [90] Setting up custom desktop entries"
+echo "==> [80] Setting up custom desktop entries"
 
 # Compute repo root (one level up from scripts/)
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && cd .. && pwd)"
@@ -47,4 +47,4 @@ do
     fi
 done
 
-echo "==> [90] Desktop entry setup complete"
+echo "==> [80] Desktop entry setup complete"

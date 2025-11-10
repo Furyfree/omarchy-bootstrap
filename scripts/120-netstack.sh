@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [70] Switching to NetworkManager + iwd stack"
+echo "==> [120] Switching to NetworkManager + iwd stack"
 
 # --- Detect current backend ---
 detect_backend() {
@@ -76,4 +76,4 @@ done
 
 sleep 10
 echo "--> Current backend: $(detect_backend)"
-echo "==> [70] Netstack configuration complete"
+echo "==> [120] Netstack configuration complete"

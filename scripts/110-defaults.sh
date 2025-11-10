@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [120] Setting default applications (Ghostty + Helium)"
+echo "==> [110] Setting default applications (Ghostty + Helium)"
 
 # --- Set Ghostty as default terminal ---
 if command -v omarchy-install-terminal >/dev/null 2>&1; then
@@ -30,4 +30,4 @@ else
     echo "   WidevineCdm or Helium browser directory missing; skipping DRM link"
 fi
 
-echo "==> [120] Default application setup complete"
+echo "==> [110] Default application setup complete"
