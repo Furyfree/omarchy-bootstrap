@@ -21,7 +21,6 @@ fi
 cd "$DOTFILES" || exit 1
 
 while IFS= read -r dir || [ -n "$dir" ]; do
-  # skip comments or empty lines
   [ -z "$dir" ] && continue
   case "$dir" in
     \#*) continue ;;
@@ -29,10 +28,11 @@ while IFS= read -r dir || [ -n "$dir" ]; do
 
   if [ -d "$DOTFILES/$dir" ]; then
     echo "--> Stowing $dir"
-    stow -R --override='.*' "$dir"
+    stow -R -t "$HOME" "$dir"
   else
     echo "--> Skipping missing directory: $dir"
   fi
 done < "$LIST"
+
 
 echo "==> [30] Dotfiles stow complete"
