@@ -1,0 +1,18 @@
+#!/bin/sh
+set -e
+
+echo "==> [60] Checking for AMD GPU and applying optimizations"
+
+if lspci | grep -qi "AMD"; then
+  echo "--> AMD GPU detected, installing Mesa and Vulkan packages"
+  sudo pacman -S --noconfirm \
+    mesa lib32-mesa \
+    vulkan-radeon lib32-vulkan-radeon \
+    vulkan-icd-loader lib32-vulkan-icd-loader \
+    libva-mesa-driver lib32-libva-mesa-driver \
+    vulkan-tools mesa-demos
+else
+  echo "--> No AMD GPU detected, skipping AMD packages"
+fi
+
+echo "==> [60] AMD setup complete"

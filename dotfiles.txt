@@ -1,0 +1,10 @@
+bat
+ghostty
+git
+starship
+tmux
+wlogout
+yazi
+zed
+zshrc
+zellij
