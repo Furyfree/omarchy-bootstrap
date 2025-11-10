@@ -7,14 +7,46 @@ This covers remaining manual steps for Helium, Zed, JetBrains, and VPN configura
 
 ## Browser Configuration
 
-**Helium Browser Extensions:**
+### Helium Browser Extensions
 - **1Password** – Password manager integration
 - **uBlock Origin** – Ad/tracker blocker
 - **Dark Reader** – Universal dark mode
-- **Bookmarkhub** – Centralized bookmark management
+- **Bookmarkhub** – Centralized bookmark management (credentials stored in 1Password)
 
-**Helium Preferences:**
-- Set default search to **Google**
+---
+
+### Helium Preferences
+
+#### Search
+- **Default Search Engine:** Google
+- **Suggestions from Search Engine:** Disabled
+
+#### Appearance
+- **Theme:** Helium Colors
+- **Mode:** Device
+- **Show Home Button:** Disabled
+- **Show Bookmarks Bar:** Disabled
+- **Open New Tabs Next to Active Tab:** Disabled
+- **Show Tab Groups in Bookmarks Bar:** Disabled
+- **Automatically Pin New Tab Groups:** Enabled
+- **Side Panel Position:** Right
+- **Tab Preview Images:** Enabled
+- **Tab Memory Usage:** Enabled
+- **Use System Title Bar and Borders:** Enabled
+
+#### Languages & Spell Check
+- **Preferred Languages:**
+  - English (United States)
+  - English
+  - Danish
+- **Spell Check Enabled For:**
+  - English (United States)
+  - Danish
+
+#### Start Page Customization
+- **Toolbar:** Only **Extensions** and **Main Menu** enabled
+- **Show Shortcuts:** Disabled
+
 
 ---
 
