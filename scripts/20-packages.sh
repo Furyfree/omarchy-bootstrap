@@ -33,4 +33,24 @@ while IFS= read -r pkg || [ -n "$pkg" ]; do
   fi
 done < "$LIST"
 
+# Handle Zed installation
+if ! command -v zed >/dev/null 2>&1; then
+  echo "--> Installing Zed editor"
+  if curl -fsSL https://zed.dev/install.sh | sh; then
+    echo "--> Zed installed successfully"
+  else
+    echo "WARNING: Failed to install Zed"
+  fi
+else
+  echo "--> Zed already installed, skipping"
+fi
+
+# Remove Alacritty from pacman if installed
+if pacman -Qi alacritty >/dev/null 2>&1; then
+  echo "--> Removing conflicting Alacritty package"
+  paru -Rns alacritty --noconfirm || true
+else
+  echo "--> Alacritty not installed via pacman, skipping"
+fi
+
 echo "==> [20] Package installation complete"
