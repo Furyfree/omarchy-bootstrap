@@ -3,7 +3,7 @@ set -e
 
 echo "==> [100] Installing DTU Eduroam certificate"
 
-CERT_SRC="$HOME/git/dotfiles-2.0/certs/dtu-eduroam.pem"
+CERT_SRC="$HOME/git/omarchy-bootstrap/certs/dtu-eduroam.pem"
 CERT_DST="/etc/certs/dtu-eduroam.pem"
 
 if [ ! -f "$CERT_SRC" ]; then
