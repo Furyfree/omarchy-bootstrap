@@ -25,6 +25,5 @@ if command -v hyprctl >/dev/null 2>&1; then
   hyprctl reload || true
 fi
 
-echo "==> Omarchy Bootstrap Complete"
 echo "PLEASE REBOOT FOR EVERYTHING TO TAKE EFFECT AND CONNECT TO THE WIFI AGAIN"
 echo "READ POSTINSTALL.MD"
