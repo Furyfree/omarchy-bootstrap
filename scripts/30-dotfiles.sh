@@ -29,7 +29,7 @@ while IFS= read -r dir || [ -n "$dir" ]; do
 
   if [ -d "$DOTFILES/$dir" ]; then
     echo "--> Stowing $dir"
-    stow -R "$dir"
+    stow -R --override='.*' "$dir"
   else
     echo "--> Skipping missing directory: $dir"
   fi
