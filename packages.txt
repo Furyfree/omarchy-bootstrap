@@ -31,3 +31,4 @@ mise
 dotnet-sdk
 bind
 go
+zellij
