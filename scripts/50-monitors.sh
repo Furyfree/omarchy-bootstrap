@@ -22,7 +22,7 @@ HOST="$(hostname | tr '[:upper:]' '[:lower:]')"
 
 case "$HOST" in
   arctop)
-    echo "--> Detected host: arctop"
+    echo "--> Detected host: archtop"
     ln -sf "$MON_DIR/desktop.conf" "$MON_DIR/current.conf"
     ;;
   archbook)
