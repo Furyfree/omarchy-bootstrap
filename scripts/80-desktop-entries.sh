@@ -30,6 +30,11 @@ for file in "$ICONS_DIR"/*.png; do
     ln -sf "$file" "$HOME/.local/share/icons/"
 done
 
+GIT_TOOLBOX_DIR=$SCRIPT_DIR/opt/jetbrains-toolbox
+TOOLBOX_DIR=/opt/jetbrains-toolbox
+echo "--> Copying Jetbrains Toolbox icon"
+sudo ln -sf $GIT_TOOLBOX_DIR/toolbox.svg $TOOLBOX_DIR
+
 echo "--> Backing up unwanted desktop entries"
 # List of entries to disable
 for filename in \
