@@ -16,6 +16,7 @@ echo "==> Running Omarchy Bootstrap"
 ./scripts/70-dev.sh
 ./scripts/80-desktop-entries.sh
 ./scripts/90-certs.sh
+./scripts/95-wago-addons.sh
 ./scripts/100-trusted-1password.sh
 ./scripts/110-defaults.sh
 ./scripts/120-netstack.sh
