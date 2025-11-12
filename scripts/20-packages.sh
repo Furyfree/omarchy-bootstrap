@@ -45,6 +45,19 @@ else
   echo "--> Zed already installed, skipping"
 fi
 
+if ! command -v steam >/dev/null 2>&1; then
+  if command -v omarchy-install-steam >/dev/null 2>&1; then
+    echo "--> Installing Steam"
+    omarchy-install-steam
+    echo "--> Steam installed successfully"
+  else
+    echo "WARNING: omarchy-install-steam command not found"
+  fi
+else
+  echo "--> Steam already installed, skipping"
+fi
+
+
 # Remove Alacritty from pacman if installed
 if pacman -Qi alacritty >/dev/null 2>&1; then
   echo "--> Removing conflicting Alacritty package"

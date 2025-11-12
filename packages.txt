@@ -32,3 +32,4 @@ dotnet-sdk
 bind
 go
 zellij
+faugus-launcher
