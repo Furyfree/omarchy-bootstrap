@@ -10,6 +10,7 @@ echo "==> Running Omarchy Bootstrap"
 ./scripts/15-fonts.sh
 ./scripts/20-packages.sh
 ./scripts/30-dotfiles.sh
+./scripts/35-ghostty.sh
 ./scripts/40-hypr.sh
 ./scripts/50-monitors.sh
 ./scripts/60-amd.sh

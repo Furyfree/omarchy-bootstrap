@@ -1,0 +1,62 @@
+#!/bin/sh
+set -e
+
+echo "==> [35] Setting up Ghostty keybindings"
+
+DOTFILES="$HOME/git/dotfiles"
+GHOSTTY_DIR="$HOME/.config/ghostty"
+GHOSTTY_CONFIG="$GHOSTTY_DIR/config"
+SOURCE_LINE="config-file = keybindings"
+SOURCE_FILE="$DOTFILES/ghostty/.config/ghostty/keybindings"
+TARGET_FILE="$GHOSTTY_DIR/keybindings"
+
+# Ensure Ghostty config exists
+if [ ! -f "$GHOSTTY_CONFIG" ]; then
+    echo "Error: Ghostty config not found at $GHOSTTY_CONFIG"
+    exit 1
+fi
+
+# Ensure keybindings file exists in dotfiles
+if [ ! -f "$SOURCE_FILE" ]; then
+    echo "Error: keybindings file not found in repo"
+    exit 1
+fi
+
+echo "--> Deploying Ghostty keybindings via symlink"
+mkdir -p "$GHOSTTY_DIR"
+
+# If target exists, check if already correct symlink
+if [ -L "$TARGET_FILE" ]; then
+    LINK_TARGET="$(readlink "$TARGET_FILE")"
+    if [ "$LINK_TARGET" = "$SOURCE_FILE" ]; then
+        echo "--> Correct symlink already exists, skipping"
+    else
+        echo "--> Updating symlink (was linked to $LINK_TARGET)"
+        rm -f "$TARGET_FILE"
+        ln -s "$SOURCE_FILE" "$TARGET_FILE"
+    fi
+elif [ -e "$TARGET_FILE" ]; then
+    BACKUP_FILE="$TARGET_FILE.backup_$(date +%Y%m%d-%H%M%S)"
+    echo "--> Backing up existing file to $BACKUP_FILE"
+    cp "$TARGET_FILE" "$BACKUP_FILE"
+    rm -f "$TARGET_FILE"
+    ln -s "$SOURCE_FILE" "$TARGET_FILE"
+    echo "--> Replaced with symlink"
+else
+    ln -s "$SOURCE_FILE" "$TARGET_FILE"
+    echo "--> Symlink created for keybindings"
+fi
+
+# Add config-file line if missing
+if grep -Fxq "$SOURCE_LINE" "$GHOSTTY_CONFIG"; then
+    echo "--> config-file line already present"
+else
+    echo "--> Adding config-file line to $GHOSTTY_CONFIG"
+    {
+        echo ""
+        echo "$SOURCE_LINE"
+    } >> "$GHOSTTY_CONFIG"
+    echo "--> config-file line added"
+fi
+
+echo "==> [35] Ghostty keybindings setup complete"
