@@ -1,7 +1,9 @@
 [Desktop Entry]
-Name=Wago Addon Manager
-Exec=/home/$USER/Apps/Wago/Wago.AppImage
+Name=WagoApp
+Comment=World of Warcraft AddOn Manager
+Exec=/home/pby/Apps/Wago/Wago.AppImage %U
+StartupWMClass=wago-app
 Icon=Wago
 Type=Application
-Categories=Game;Utility;
-StartupWMClass=Wago
+Categories=Game;
+MimeType=x-scheme-handler/wago-app;
