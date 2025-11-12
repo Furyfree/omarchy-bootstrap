@@ -33,3 +33,4 @@ bind
 go
 zellij
 faugus-launcher
+wget
