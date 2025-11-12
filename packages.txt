@@ -35,3 +35,4 @@ zellij
 faugus-launcher
 wget
 gamemode
+ttf-font-awesome
