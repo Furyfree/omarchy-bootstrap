@@ -5,5 +5,5 @@ Comment=Google Maps
 Exec=omarchy-launch-webapp https://www.google.com/maps
 Terminal=false
 Type=Application
-Icon=/home/pby/.local/share/applications/icons/GoogleMaps.png
+Icon=GoogleMaps
 StartupNotify=true

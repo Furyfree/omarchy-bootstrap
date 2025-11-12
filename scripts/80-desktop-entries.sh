@@ -7,24 +7,27 @@ echo "==> [80] Setting up custom desktop entries"
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && cd .. && pwd)"
 
 APPLICATION_DIR="$SCRIPT_DIR/.local/share/applications"
-ICONS_DIR="$APPLICATION_DIR/icons"
+ICONS_DIR="$SCRIPT_DIR/.local/share/icons"
 
 echo "--> Creating application directories"
 mkdir -p "$HOME/.local/share/applications"
-mkdir -p "$HOME/.local/share/applications/icons"
+mkdir -p "$HOME/.local/share/icons"
 
-echo "--> Copying .desktop files"
+echo "--> Linking .desktop files"
 for file in "$APPLICATION_DIR"/*.desktop; do
     [ -f "$file" ] || continue
     basefile="$(basename "$file")"
+    target="$HOME/.local/share/applications/$basefile"
+
     echo "    -> $basefile"
-    sed "s|/home/pby|$HOME|g" "$file" >"$HOME/.local/share/applications/$basefile"
+    ln -sf "$file" "$target"
 done
+
 
 echo "--> Copying icons"
 for file in "$ICONS_DIR"/*.png; do
     [ -f "$file" ] || continue
-    cp "$file" "$HOME/.local/share/applications/icons/"
+    ln -sf "$file" "$HOME/.local/share/icons/"
 done
 
 echo "--> Backing up unwanted desktop entries"

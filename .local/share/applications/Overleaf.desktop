@@ -5,5 +5,5 @@ Comment=Overleaf Latex Writing
 Exec=omarchy-launch-webapp https://www.overleaf.com/project
 Terminal=false
 Type=Application
-Icon=/home/pby/.local/share/applications/icons/Overleaf.png
+Icon=Overleaf
 StartupNotify=true

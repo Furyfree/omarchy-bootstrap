@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Wago Addon Manager
 Exec=/home/$USER/Apps/Wago/Wago.AppImage
-Icon=/home/pby/.local/share/applications/icons/Wago.png
+Icon=Wago
 Type=Application
 Categories=Game;Utility;
 StartupWMClass=Wago

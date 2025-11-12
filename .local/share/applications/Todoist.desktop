@@ -5,5 +5,5 @@ Comment=Todo App
 Exec=omarchy-launch-webapp https://app.todoist.com/
 Terminal=false
 Type=Application
-Icon=/home/pby/.local/share/applications/icons/Todoist.png
+Icon=Todoist
 StartupNotify=true
