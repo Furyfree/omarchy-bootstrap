@@ -34,13 +34,21 @@ fi
 sudo systemctl enable --now ollama
 
 # --- Models ---
+echo "Installing DeepSeek R1 14B..."
 ollama pull deepseek-r1:14b
+echo "Installing DeepSeek R1 7B..."
 ollama pull deepseek-r1:7b
+echo "Installing Qwen 2.5 Coder 7B..."
 ollama pull qwen2.5-coder:7b
+echo "Installing Qwen 2.5 Coder 14B..."
 ollama pull qwen2.5-coder:14b
+echo "Installing Qwen 3 14B..."
 ollama pull qwen3:14b
+echo "Installing Qwen 3 8B..."
 ollama pull qwen3:8b
+echo "Installing Llama 3.1 8B..."
 ollama pull llama3.1:8b
+echo "Installing GPT-OSS 20B..."
 ollama pull gpt-oss:20b
 
 # --- Clean old open-webui run ---
