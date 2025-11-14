@@ -78,8 +78,8 @@ if [ ! -f "$TEMPLATE" ]; then
     exit 1
 fi
 
-echo "--> Linking $(basename "$TEMPLATE")"
-sudo ln -sf "$TEMPLATE" /etc/systemd/system/openwebui.service
+echo "--> Copying $(basename "$TEMPLATE")"
+sudo cp "$TEMPLATE" /etc/systemd/system/openwebui.service
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now openwebui
