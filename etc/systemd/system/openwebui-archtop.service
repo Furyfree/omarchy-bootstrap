@@ -9,6 +9,7 @@ ExecStart=/usr/bin/docker run --rm \
     --net=host \
     -e PORT=3210 \
     -e WEBUI_AUTH=False \
+    -e OLLAMA_BASE_URL=http://127.0.0.1:11434 \
     --gpus all \
     -v open-webui:/app/backend/data \
     --name open-webui \
