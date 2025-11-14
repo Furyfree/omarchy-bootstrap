@@ -1,11 +1,13 @@
 #!/bin/sh
 set -e
 
+SCRIPT_DIR="$HOME/git/omarchy-bootstrap/etc/systemd/system"
 HOSTNAME=$(hostname)
+PORT=3210
 
 echo "==> [75] Setting up local AI and Codex"
 
-# Check if Opencode is installed
+# --- Opencode ---
 if ! command -v opencode >/dev/null 2>&1; then
     echo "Opencode not found, installing..."
     curl -fsSL https://opencode.ai/install | bash || true
@@ -13,7 +15,7 @@ else
     echo "Opencode is already installed."
 fi
 
-# Check if Codex is installed
+# --- Codex ---
 if ! command -v codex >/dev/null 2>&1; then
     echo "Codex not found, installing..."
     npm i -g @openai/codex || true
@@ -21,16 +23,17 @@ else
     echo "Codex is already installed."
 fi
 
-# Check if Ollama is installed
+# --- Ollama ---
 if ! command -v ollama >/dev/null 2>&1; then
     echo "Ollama not found, installing..."
     curl -fsSL https://ollama.com/install.sh | sh
 else
     echo "Ollama is already installed."
 fi
+
 sudo systemctl enable --now ollama
 
-# Models (ollama pull is already idempotent)
+# --- Models ---
 ollama pull deepseek-r1:14b
 ollama pull deepseek-r1:7b
 ollama pull qwen2.5-coder:7b
@@ -40,34 +43,33 @@ ollama pull qwen3:8b
 ollama pull llama3.1:8b
 ollama pull gpt-oss:20b
 
-# Stop existing container if it exists, but don't throw an error if missing
-docker rm -f open-webui 2>/dev/null || true
+# --- Clean old open-webui run ---
+docker rm -f open-webui >/dev/null 2>&1 || true
+sudo systemctl disable --now openwebui 2>/dev/null || true
+sudo rm -f /etc/systemd/system/openwebui.service
 
-# Desktop vs laptop
+echo "--> Pulling correct OpenWebUI image"
 if [ "$HOSTNAME" = "archtop" ]; then
-    echo "--> Starting GPU OpenWebUI (desktop)"
-    # If container doesn't exist, create and start it
-    docker run -d \
-      -p 3000:8080 \
-      --gpus all \
-      --add-host=host.docker.internal:host-gateway \
-      -v open-webui:/app/backend/data \
-      --name open-webui \
-      --restart always \
-      ghcr.io/open-webui/open-webui:cuda
-
+    docker pull ghcr.io/open-webui/open-webui:cuda
+    TEMPLATE="$SCRIPT_DIR/openwebui-archtop.service"
 elif [ "$HOSTNAME" = "archbook" ]; then
-    echo "--> Starting CPU OpenWebUI with Ollama inside (laptop)"
-    # If container doesn't exist, create and start it
-    docker run -d \
-      -p 3000:8080 \
-      -v ollama:/root/.ollama \
-      -v open-webui:/app/backend/data \
-      --name open-webui \
-      --restart always \
-      ghcr.io/open-webui/open-webui:ollama
-
+    docker pull ghcr.io/open-webui/open-webui:main
+    TEMPLATE="$SCRIPT_DIR/openwebui-archbook.service"
 else
     echo "Unknown hostname: $HOSTNAME"
     exit 1
 fi
+
+# --- Validate template exists ---
+if [ ! -f "$TEMPLATE" ]; then
+    echo "ERROR: Template not found: $TEMPLATE"
+    exit 1
+fi
+
+echo "--> Linking $(basename "$TEMPLATE")"
+sudo ln -sf "$TEMPLATE" /etc/systemd/system/openwebui.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now openwebui
+
+echo "Done. OpenWebUI will run at: http://localhost:$PORT"
