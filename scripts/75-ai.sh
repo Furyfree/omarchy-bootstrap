@@ -60,6 +60,10 @@ echo "--> Pulling correct OpenWebUI image"
 if [ "$HOSTNAME" = "archtop" ]; then
     docker pull ghcr.io/open-webui/open-webui:cuda
     TEMPLATE="$SCRIPT_DIR/openwebui-archtop.service"
+    sudo pacman -S nvidia-container-toolkit
+    sudo nvidia-ctk runtime configure --runtime=docker
+    sudo systemctl restart docker
+    sudo systemctl restart openwebui
 elif [ "$HOSTNAME" = "archbook" ]; then
     docker pull ghcr.io/open-webui/open-webui:main
     TEMPLATE="$SCRIPT_DIR/openwebui-archbook.service"
