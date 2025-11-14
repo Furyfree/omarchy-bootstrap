@@ -63,7 +63,6 @@ if [ "$HOSTNAME" = "archtop" ]; then
     sudo pacman -S nvidia-container-toolkit --noconfirm
     sudo nvidia-ctk runtime configure --runtime=docker
     sudo systemctl restart docker
-    sudo systemctl restart openwebui
 elif [ "$HOSTNAME" = "archbook" ]; then
     docker pull ghcr.io/open-webui/open-webui:main
     TEMPLATE="$SCRIPT_DIR/openwebui-archbook.service"
