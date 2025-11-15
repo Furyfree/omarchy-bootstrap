@@ -14,11 +14,12 @@ read AI_CLEAN
 echo -n "Install AI stack (Ollama, WebUI, models)? [y/N]: "
 read AI_SETUP
 
-echo -n "Install WoW addons? [y/N]: "
-read WOW_ADDONS
-
 echo -n "Install Wootility webapp + udev rules? [y/N]: "
 read WOOTILITY
+
+echo -n "Run Gaming Setup? (Steam, Wago, WowUp, gamemode, faugus) [y/N]: "
+read GAMING_SETUP
+
 
 # --- RUN CORE SCRIPTS ---
 omb-bootstrap-prereqs
@@ -48,14 +49,13 @@ if [ "$AI_SETUP" = "y" ] || [ "$AI_SETUP" = "Y" ]; then
     omb-ai-setup
 fi
 
-if [ "$WOW_ADDONS" = "y" ] || [ "$WOW_ADDONS" = "Y" ]; then
-    omb-wow-addons-install
-fi
-
 if [ "$WOOTILITY" = "y" ] || [ "$WOOTILITY" = "Y" ]; then
     omb-wootility-setup
 fi
 
+if [ "$GAMING_SETUP" = "y" ] || [ "$GAMING_SETUP" = "Y" ]; then
+    omb-gaming-setup
+fi
 
 # --- FINALIZE ---
 if command -v hyprctl >/dev/null 2>&1; then

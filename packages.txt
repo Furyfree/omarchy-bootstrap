@@ -22,6 +22,4 @@ mise
 dotnet-sdk
 bind
 go
-faugus-launcher
 wget
-gamemode
