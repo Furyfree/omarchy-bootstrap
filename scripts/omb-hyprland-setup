@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [40] Setting up Hyprland overrides"
+echo "==> [Hyprland] Setting up Hyprland overrides"
 
 DOTFILES="$HOME/git/dotfiles"
 HYPR_DIR="$HOME/.config/hypr"
@@ -88,4 +88,4 @@ else
     echo "--> Source line added"
 fi
 
-echo "==> [40] Hyprland overrides setup complete"
+echo "==> [Hyprland] Hyprland overrides setup complete"

@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [85] Setting up Wootility (webapp + udev rules)"
+echo "==> [Wootility] Setting up Wootility (webapp + udev rules)"
 
 SCRIPT_DIR="$HOME/git/omarchy-bootstrap"
 APP_DIR="$HOME/.local/share/applications"
@@ -49,4 +49,4 @@ sudo udevadm trigger
 echo "-> Wooting udev rules applied"
 
 
-echo "==> [85] Wootility setup complete"
+echo "==> Wootility setup complete"

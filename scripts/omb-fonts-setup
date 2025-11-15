@@ -1,8 +1,11 @@
 #!/bin/sh
 set -e
 
+echo "==> [Fonts] Installing emoji fonts (noto-fonts-emoji)"
 paru -S --noconfirm --needed \
-  noto-fonts-emoji \
-  ttf-font-awesome
+  noto-fonts-emoji
 
+echo "==> [Fonts] Rebuilding font cache"
 fc-cache -v
+
+echo "==> [Fonts] Font setup complete"

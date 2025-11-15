@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [10] Setting default shell to zsh"
+echo "==> [Shell] Setting default shell to zsh"
 
 if [ "$SHELL" != "/bin/zsh" ]; then
   if command -v zsh >/dev/null 2>&1; then

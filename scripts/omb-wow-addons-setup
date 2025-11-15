@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [90] Installing Wago and WowUp Addon Managers"
+echo "==> [WoW Addons] Installing Wago and WowUp Addon Managers"
 
 # --- Wago setup ---
 WAGO_DIR="$HOME/Apps/Wago"
@@ -16,12 +16,12 @@ else
     -o "$WAGO_FILE" \
     "https://wago-addons.ams3.digitaloceanspaces.com/wagoapp/WagoApp_2.8.0.AppImage"
   chmod +x "$WAGO_FILE"
-  echo "--> Wago App installed"
+  echo "[WoW Addons] Wago App installed"
 fi
 
 # Register scheme handler if Wago.desktop exists
 if [ -f "$HOME/.local/share/applications/Wago.desktop" ]; then
-  echo "--> Registering Wago URL handler"
+  echo "[WoW Addons] Registering Wago URL handler"
   xdg-mime default Wago.desktop x-scheme-handler/wago-app
 fi
 
@@ -39,13 +39,13 @@ else
     -o "$WOWUP_FILE" \
     "https://github.com/WowUp/WowUp.CF/releases/download/v2.20.0/WowUp-CF-2.20.0.AppImage"
   chmod +x "$WOWUP_FILE"
-  echo "--> WowUp App installed"
+  echo "[WoW Addons] WowUp App installed"
 fi
 
 # Register scheme handler if Wowup.desktop exists
 if [ -f "$HOME/.local/share/applications/Wowup.desktop" ]; then
-  echo "--> Registering WowUp URL handler"
+  echo "[WoW Addons] Registering WowUp URL handler"
   xdg-mime default Wowup.desktop x-scheme-handler/wowup-app
 fi
 
-echo "==> [90] Finished installing Wago and WowUp Addon Managers"
+echo "==> [WoW Addons] Finished installing Wago and WowUp Addon Managers"

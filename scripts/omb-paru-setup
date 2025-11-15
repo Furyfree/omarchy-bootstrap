@@ -2,7 +2,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [10] Installing and configuring Paru"
+echo "==> [Paru] Installing and configuring Paru"
 
 # check if paru already installed
 if command -v paru >/dev/null 2>&1; then
@@ -32,4 +32,4 @@ makepkg -si --noconfirm
 cd ~
 rm -rf "$TMP_DIR"
 
-echo "==> [10] Paru installation complete"
+echo "==> [Paru] Paru installation complete"

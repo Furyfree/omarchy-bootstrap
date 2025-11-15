@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [90] Installing DTU Eduroam certificate"
+echo "==> [Certs] Installing DTU Eduroam certificate"
 
 CERT_SRC="$HOME/git/omarchy-bootstrap/etc/certs/Eduroam_aug2020.pem"
 CERT_DST="/etc/certs/Eduroam_aug2020.pem"
@@ -14,7 +14,7 @@ fi
 sudo mkdir -p /etc/certs
 sudo cp "$CERT_SRC" "$CERT_DST"
 
-echo "--> Updating system CA trust"
+echo "[Certs] --> Updating system CA trust"
 sudo update-ca-trust
 
-echo "==> [90] Eduroam certificate installation complete"
+echo "==> [Certs] Eduroam certificate installation complete"

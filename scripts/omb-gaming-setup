@@ -1,41 +1,41 @@
 #!/bin/sh
 set -e
 
-echo "==> [90] Running Gaming Setup"
+echo "==> [Gaming] Running Gaming Setup"
 
 # --- Steam installation ---
 if ! command -v steam >/dev/null 2>&1; then
   if command -v omarchy-install-steam >/dev/null 2>&1; then
-    echo "--> Installing Steam"
+    echo "[Gaming] --> Installing Steam"
     omarchy-install-steam
-    echo "--> Steam installed successfully"
+    echo "[Gaming] --> Steam installed successfully"
   else
-    echo "WARNING: omarchy-install-steam command not found"
+    echo "[Gaming] WARNING: omarchy-install-steam command not found"
   fi
 else
-  echo "--> Steam already installed, skipping"
+  echo "[Gaming] --> Steam already installed, skipping"
 fi
 
 
 # --- Install gamemode if missing ---
 if ! command -v gamemode >/dev/null 2>&1; then
-  echo "--> Installing gamemode"
+  echo "[Gaming] --> Installing gamemode"
   sudo pacman -S --noconfirm gamemode
 else
-  echo "--> gamemode already installed"
+  echo "[Gaming] --> gamemode already installed"
 fi
 
 
 # --- Install faugus-launcher (AUR) ---
 if ! command -v faugus-launcher >/dev/null 2>&1; then
   if command -v paru >/dev/null 2>&1; then
-    echo "--> Installing faugus-launcher (AUR)"
+    echo "[Gaming] --> Installing faugus-launcher (AUR)"
     paru -S --noconfirm faugus-launcher
   else
-    echo "ERROR: paru not found, cannot install faugus-launcher"
+    echo "[Gaming] ERROR: paru not found, cannot install faugus-launcher"
   fi
 else
-  echo "--> faugus-launcher already installed"
+  echo "[Gaming] --> faugus-launcher already installed"
 fi
 
-echo "==> [90] Gaming Setup Complete"
+echo "==> [Gaming] Gaming Setup Complete"

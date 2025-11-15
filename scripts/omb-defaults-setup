@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [110] Setting default applications (Ghostty + Helium)"
+echo "==> [Defaults] Setting default applications (Ghostty + Helium)"
 
 # --- Set Ghostty as default terminal ---
 if command -v omarchy-install-terminal >/dev/null 2>&1; then
@@ -36,4 +36,4 @@ if command -v hyprctl >/dev/null 2>&1; then
     hyprctl reload || true
 fi
 
-echo "==> [110] Default application setup complete"
+echo "==> [Defaults] Default application setup complete"

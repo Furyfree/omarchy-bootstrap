@@ -5,52 +5,52 @@ SCRIPT_DIR="$HOME/git/omarchy-bootstrap/etc/systemd/system"
 HOSTNAME=$(hostname)
 PORT=3210
 
-echo "==> [75] Setting up local AI and Codex"
+echo "==> [AI] Setting up local AI and Codex"
 
 # --- Opencode ---
 if ! command -v opencode >/dev/null 2>&1; then
-    echo "Opencode not found, installing..."
+    echo "[AI] Opencode not found, installing..."
     curl -fsSL https://opencode.ai/install | bash || true
 else
-    echo "Opencode is already installed."
+    echo "[AI] Opencode is already installed."
 fi
 
 # --- Codex ---
 if ! command -v codex >/dev/null 2>&1; then
-    echo "Codex not found, installing..."
+    echo "[AI] Codex not found, installing..."
     npm i -g @openai/codex || true
 else
-    echo "Codex is already installed."
+    echo "[AI] Codex is already installed."
 fi
 
 # --- Ollama ---
 if ! command -v ollama >/dev/null 2>&1; then
-    echo "Ollama not found, installing..."
+    echo "[AI] Ollama not found, installing..."
     curl -fsSL https://ollama.com/install.sh | sh
 else
-    echo "Ollama is already installed."
+    echo "[AI] Ollama is already installed."
 fi
 
 sudo systemctl enable --now ollama
 
 # --- Models ---
-echo "Installing DeepSeek R1 14B..."
+echo "[AI] Installing DeepSeek R1 14B..."
 ollama pull deepseek-r1:14b
-echo "Installing DeepSeek R1 7B..."
+echo "[AI] Installing DeepSeek R1 7B..."
 ollama pull deepseek-r1:7b
-echo "Installing Qwen 2.5 Coder 3B..."
+echo "[AI] Installing Qwen 2.5 Coder 3B..."
 ollama pull qwen2.5-coder:3b
-echo "Installing Qwen 2.5 Coder 7B..."
+echo "[AI] Installing Qwen 2.5 Coder 7B..."
 ollama pull qwen2.5-coder:7b
-echo "Installing Qwen 2.5 Coder 14B..."
+echo "[AI] Installing Qwen 2.5 Coder 14B..."
 ollama pull qwen2.5-coder:14b
-echo "Installing Qwen 3 14B..."
+echo "[AI] Installing Qwen 3 14B..."
 ollama pull qwen3:14b
-echo "Installing Qwen 3 8B..."
+echo "[AI] Installing Qwen 3 8B..."
 ollama pull qwen3:8b
-echo "Installing Llama 3.1 8B..."
+echo "[AI] Installing Llama 3.1 8B..."
 ollama pull llama3.1:8b
-echo "Installing GPT-OSS 20B..."
+echo "[AI] Installing GPT-OSS 20B..."
 ollama pull gpt-oss:20b
 
 # --- Clean old open-webui run ---
@@ -58,7 +58,7 @@ docker rm -f open-webui >/dev/null 2>&1 || true
 sudo systemctl disable --now openwebui 2>/dev/null || true
 sudo rm -f /etc/systemd/system/openwebui.service
 
-echo "--> Pulling correct OpenWebUI image"
+echo "[AI] Pulling correct OpenWebUI image"
 if [ "$HOSTNAME" = "archtop" ]; then
     docker pull ghcr.io/open-webui/open-webui:cuda
     TEMPLATE="$SCRIPT_DIR/openwebui-archtop.service"
@@ -69,20 +69,20 @@ elif [ "$HOSTNAME" = "archbook" ]; then
     docker pull ghcr.io/open-webui/open-webui:main
     TEMPLATE="$SCRIPT_DIR/openwebui-archbook.service"
 else
-    echo "Unknown hostname: $HOSTNAME"
+    echo "[AI] Unknown hostname: $HOSTNAME"
     exit 1
 fi
 
 # --- Validate template exists ---
 if [ ! -f "$TEMPLATE" ]; then
-    echo "ERROR: Template not found: $TEMPLATE"
+    echo "[AI] ERROR: Template not found: $TEMPLATE"
     exit 1
 fi
 
-echo "--> Copying $(basename "$TEMPLATE")"
+echo "[AI] Copying $(basename \"$TEMPLATE\")"
 sudo cp "$TEMPLATE" /etc/systemd/system/openwebui.service
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now openwebui
 
-echo "Done. OpenWebUI will run at: http://localhost:$PORT"
+echo "[AI] Done. OpenWebUI will run at: http://localhost:$PORT"

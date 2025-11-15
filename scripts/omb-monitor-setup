@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [50] Setting monitor configuration"
+echo "==> [Monitor] Setting monitor configuration"
 
 HYPR_DIR="$HOME/.config/hypr"
 MON_DIR="$HYPR_DIR/monitors"
@@ -34,4 +34,4 @@ case "$HOST" in
     ;;
 esac
 
-echo "==> [50] Monitor setup complete"
+echo "==> [Monitor] Monitor setup complete"

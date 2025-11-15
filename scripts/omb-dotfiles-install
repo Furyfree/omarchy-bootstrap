@@ -4,7 +4,7 @@ set -e
 DOTFILES="$HOME/git/dotfiles"
 LIST="$PWD/dotfiles.txt"
 
-echo "==> [30] Stowing dotfiles from $DOTFILES"
+echo "==> [Dotfiles] Stowing dotfiles from $DOTFILES"
 
 # ensure dotfiles repo exists
 if [ ! -d "$DOTFILES" ]; then
@@ -43,4 +43,4 @@ else
   echo "--> bat not installed, skipping cache rebuild"
 fi
 
-echo "==> [30] Dotfiles stow complete"
+echo "==> [Dotfiles] Dotfiles stow complete"

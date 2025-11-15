@@ -2,7 +2,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [00] Checking prerequisites"
+echo "==> [Prereqs] Checking prerequisites"
 
 # ensure pacman exists
 if ! command -v pacman >/dev/null 2>&1; then
@@ -20,4 +20,4 @@ for pkg in stow curl git; do
   fi
 done
 
-echo "==> [00] Prerequisite check complete"
+echo "==> [Prereqs] Prerequisite check complete"

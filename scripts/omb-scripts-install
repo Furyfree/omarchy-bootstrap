@@ -16,5 +16,5 @@ for script in "$SCRIPT_DIR"/*; do
   ln -sf "$script" "$BIN_DIR/$base"
 done
 
-echo "==> Omarchy Bootstrap scripts installed globally."
-echo "==> Use commands with the prefix 'omb-' (example: omb-dotfiles-install)"
+echo "==> [Scripts] Omarchy Bootstrap scripts installed globally."
+echo "==> [Scripts] Use commands with the prefix 'omb-' (example: omb-dotfiles-install)"

@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [20] Installing packages from packages.txt"
+echo "==> [Packages] Installing packages from packages.txt"
 
 SCRIPT_DIR="$HOME/git/omarchy-bootstrap"
 LIST="$SCRIPT_DIR/packages.txt"
@@ -54,4 +54,4 @@ else
   echo "--> Alacritty not installed via pacman, skipping"
 fi
 
-echo "==> [20] Package installation complete"
+echo "==> [Packages] Package installation complete"

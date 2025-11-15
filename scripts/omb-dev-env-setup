@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-echo "==> [70] Installing development tools"
+echo "==> [Dev Env] Installing development tools"
 
 # Compute SCRIPT_DIR (repo root parent of scripts/)
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && cd .. && pwd)"
@@ -53,4 +53,4 @@ install_rustup
 install_python_tools
 install_java
 
-echo "==> [70] Development environment setup complete"
+echo "==> [Dev Env] Development environment setup complete"
