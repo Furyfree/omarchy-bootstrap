@@ -1,0 +1,40 @@
+#!/bin/sh
+set -e
+
+BIN_DIR="$HOME/.local/bin"
+
+# list all omb-scripts
+list_scripts() {
+    echo "Available omb scripts:"
+    ls "$BIN_DIR"/omb-* 2>/dev/null | xargs -n1 basename
+}
+
+# no argument = show list
+if [ -z "$1" ]; then
+    list_scripts
+    exit 0
+fi
+
+QUERY="$1"
+
+# find matches
+MATCH=$(ls "$BIN_DIR"/omb-* 2>/dev/null | grep "$QUERY" || true)
+
+if [ -z "$MATCH" ]; then
+    echo "No matching script for '$QUERY'"
+    echo
+    list_scripts
+    exit 1
+fi
+
+COUNT=$(echo "$MATCH" | wc -l)
+
+# multiple results → show list
+if [ "$COUNT" -gt 1 ]; then
+    echo "Multiple matches for '$QUERY':"
+    echo "$MATCH" | xargs -n1 basename
+    exit 1
+fi
+
+# show file
+cat "$MATCH"

@@ -3,24 +3,15 @@
 
 zsh
 nano
-tmux
-seahorse
 pacman-contrib
 mono
 kdeconnect
-python-sphinx
-python-sphinx_rtd_theme
-python-breathe
-python-graphviz
-graphviz
 jetbrains-toolbox
 visual-studio-code-bin
-wootility
 1password
 wlogout
 helium-browser-bin
 chromium-widevine
-handlr
 networkmanager
 proton-vpn-gtk-app
 openconnect
@@ -31,7 +22,6 @@ mise
 dotnet-sdk
 bind
 go
-zellij
 faugus-launcher
 wget
 gamemode

@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+SCRIPT_DIR="$HOME/git/omarchy-bootstrap/scripts"
+BIN_DIR="$HOME/.local/bin"
+
+mkdir -p "$BIN_DIR"
+
+# Remove old omb- commands safely
+find "$BIN_DIR" -maxdepth 1 -type f -name "omb-*" -exec rm -f {} \;
+
+# Symlink executable scripts
+for script in "$SCRIPT_DIR"/*; do
+  [ -x "$script" ] || continue
+  base=$(basename "$script")
+  ln -sf "$script" "$BIN_DIR/$base"
+done
+
+echo "==> Omarchy Bootstrap scripts installed globally."
+echo "==> Use commands with the prefix 'omb-' (example: omb-dotfiles-install)"

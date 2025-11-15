@@ -3,29 +3,69 @@ set -e
 
 echo "==> Running Omarchy Bootstrap"
 
-# Run scripts in order
-./scripts/00-prereqs.sh
-./scripts/05-shell.sh
-./scripts/10-paru.sh
-./scripts/15-fonts.sh
-./scripts/20-packages.sh
-./scripts/30-dotfiles.sh
-./scripts/35-ghostty.sh
-./scripts/40-hypr.sh
-./scripts/50-monitors.sh
-./scripts/60-amd.sh
-./scripts/70-dev.sh
-./scripts/80-desktop-entries.sh
-./scripts/90-certs.sh
-./scripts/95-wow-addons.sh
-./scripts/100-trusted-1password.sh
-./scripts/110-defaults.sh
-./scripts/120-netstack.sh
+# 0. Make scripts available globally
+./scripts/omb-scripts-install
 
-# Reload Hyprland if available
+
+# --- ASK QUESTIONS FIRST & SAVE ANSWERS ---
+echo -n "Run AI clean? (wipe ollama, models, data) [y/N]: "
+read AI_CLEAN
+
+echo -n "Install AI stack (Ollama, WebUI, models)? [y/N]: "
+read AI_SETUP
+
+echo -n "Install WoW addons? [y/N]: "
+read WOW_ADDONS
+
+echo -n "Install Wootility webapp + udev rules? [y/N]: "
+read WOOTILITY
+
+# --- RUN CORE SCRIPTS ---
+omb-bootstrap-prereqs
+omb-shell-setup
+omb-paru-setup
+omb-fonts-setup
+omb-install-packages
+omb-dotfiles-install
+omb-ghostty-setup
+omb-hyprland-setup
+omb-monitor-setup
+omb-amd-setup
+omb-dev-env-setup
+omb-desktop-entries-setup
+omb-certs-install
+omb-trusted-1password-setup
+omb-defaults-setup
+omb-netstack-setup
+
+
+# --- OPTIONALS (BASED ON EARLY ANSWERS) ---
+if [ "$AI_CLEAN" = "y" ] || [ "$AI_CLEAN" = "Y" ]; then
+    omb-ai-clean
+fi
+
+if [ "$AI_SETUP" = "y" ] || [ "$AI_SETUP" = "Y" ]; then
+    omb-ai-setup
+fi
+
+if [ "$WOW_ADDONS" = "y" ] || [ "$WOW_ADDONS" = "Y" ]; then
+    omb-wow-addons-install
+fi
+
+if [ "$WOOTILITY" = "y" ] || [ "$WOOTILITY" = "Y" ]; then
+    omb-wootility-setup
+fi
+
+
+# --- FINALIZE ---
 if command -v hyprctl >/dev/null 2>&1; then
   hyprctl reload || true
 fi
 
-echo "PLEASE REBOOT FOR EVERYTHING TO TAKE EFFECT AND CONNECT TO THE WIFI AGAIN"
-echo "READ POSTINSTALL.MD"
+echo
+echo "==> Omarchy Bootstrap complete."
+echo "==> All commands are now available globally with the 'omb-' prefix."
+echo "Example: omb-dotfiles-install"
+echo
+echo "PLEASE REBOOT to finalize everything and reconnect to Wi-Fi."
+echo "Read POSTINSTALL.MD"
