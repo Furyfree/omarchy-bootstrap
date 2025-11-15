@@ -3,7 +3,6 @@ set -e
 
 echo "==> [90] Running Gaming Setup"
 
-
 # --- Steam installation ---
 if ! command -v steam >/dev/null 2>&1; then
   if command -v omarchy-install-steam >/dev/null 2>&1; then
@@ -27,7 +26,7 @@ else
 fi
 
 
-# --- Install faugus-launcher if missing (AUR) ---
+# --- Install faugus-launcher (AUR) ---
 if ! command -v faugus-launcher >/dev/null 2>&1; then
   if command -v paru >/dev/null 2>&1; then
     echo "--> Installing faugus-launcher (AUR)"
@@ -38,48 +37,5 @@ if ! command -v faugus-launcher >/dev/null 2>&1; then
 else
   echo "--> faugus-launcher already installed"
 fi
-
-
-# --- Wago setup ---
-WAGO_DIR="$HOME/Apps/Wago"
-WAGO_FILE="$WAGO_DIR/Wago.AppImage"
-mkdir -p "$WAGO_DIR"
-
-if [ -f "$WAGO_FILE" ]; then
-  echo "--> Wago AppImage already exists, skipping"
-else
-  echo "--> Downloading Wago AppImage..."
-  curl -fL --retry 3 --retry-delay 2 \
-    -o "$WAGO_FILE" \
-    "https://wago-addons.ams3.digitaloceanspaces.com/wagoapp/WagoApp_2.8.0.AppImage"
-  chmod +x "$WAGO_FILE"
-fi
-
-if [ -f "$HOME/.local/share/applications/Wago.desktop" ]; then
-  xdg-mime default Wago.desktop x-scheme-handler/wago-app
-  echo "--> Registered x-scheme-handler for Wago"
-fi
-
-
-# --- WowUp setup ---
-WOWUP_DIR="$HOME/Apps/WowUp"
-WOWUP_FILE="$WOWUP_DIR/WowUp.AppImage"
-mkdir -p "$WOWUP_DIR"
-
-if [ -f "$WOWUP_FILE" ]; then
-  echo "--> WowUp AppImage already exists, skipping"
-else
-  echo "--> Downloading WowUp AppImage..."
-  curl -fL --retry 3 --retry-delay 2 \
-    -o "$WOWUP_FILE" \
-    "https://github.com/WowUp/WowUp.CF/releases/download/v2.20.0/WowUp-CF-2.20.0.AppImage"
-  chmod +x "$WOWUP_FILE"
-fi
-
-if [ -f "$HOME/.local/share/applications/Wowup.desktop" ]; then
-  xdg-mime default Wowup.desktop x-scheme-handler/wowup-app
-  echo "--> Registered x-scheme-handler for WowUp"
-fi
-
 
 echo "==> [90] Gaming Setup Complete"

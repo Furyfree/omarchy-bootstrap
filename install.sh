@@ -17,8 +17,11 @@ read AI_SETUP
 echo -n "Install Wootility webapp + udev rules? [y/N]: "
 read WOOTILITY
 
-echo -n "Run Gaming Setup? (Steam, Wago, WowUp, gamemode, faugus) [y/N]: "
+echo -n "Run Gaming Setup? (Steam, gamemode, faugus) [y/N]: "
 read GAMING_SETUP
+
+echo -n "Install WoW Addon Managers? (Wago, WowUp) [y/N]: "
+read WOW_ADDONS
 
 
 # --- RUN CORE SCRIPTS ---
@@ -55,6 +58,10 @@ fi
 
 if [ "$GAMING_SETUP" = "y" ] || [ "$GAMING_SETUP" = "Y" ]; then
     omb-gaming-setup
+fi
+
+if [ "$WOW_ADDONS" = "y" ] || [ "$WOW_ADDONS" = "Y" ]; then
+    omb-wow-addons-setup
 fi
 
 # --- FINALIZE ---
