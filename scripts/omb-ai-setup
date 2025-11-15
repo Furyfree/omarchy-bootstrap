@@ -38,6 +38,8 @@ echo "Installing DeepSeek R1 14B..."
 ollama pull deepseek-r1:14b
 echo "Installing DeepSeek R1 7B..."
 ollama pull deepseek-r1:7b
+echo "Installing Qwen 2.5 Coder 3B..."
+ollama pull qwen2.5-coder:3b
 echo "Installing Qwen 2.5 Coder 7B..."
 ollama pull qwen2.5-coder:7b
 echo "Installing Qwen 2.5 Coder 14B..."
