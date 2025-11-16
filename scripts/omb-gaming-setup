@@ -38,4 +38,16 @@ else
   echo "[Gaming] --> faugus-launcher already installed"
 fi
 
+# --- Minecraft ---
+if ! command -v minecraft-launcher >/dev/null 2>&1; then
+  echo "[Gaming] --> Installing Minecraft"
+  sudo pacman -S --noconfirm minecraft-launcher
+
+  echo "[Gaming] --> Launching Minecraft"
+  setsid gtk-launch minecraft-launcher >/dev/null 2>&1 &
+else
+  echo "[Gaming] --> Minecraft already installed"
+fi
+
+
 echo "==> [Gaming] Gaming Setup Complete"
