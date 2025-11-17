@@ -2,7 +2,7 @@
 set -e
 
 DOTFILES="$HOME/git/dotfiles"
-LIST="$PWD/dotfiles.txt"
+LIST="$HOME/git/omarchy-bootstrap/dotfiles.txt"
 
 echo "==> [Dotfiles] Stowing dotfiles from $DOTFILES"
 
