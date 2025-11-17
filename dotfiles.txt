@@ -4,3 +4,4 @@ wlogout
 yazi
 zed
 zshrc
+nvim
