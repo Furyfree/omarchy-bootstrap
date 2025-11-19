@@ -1,0 +1,35 @@
+id = "fsharp"
+name = "F#"
+version = "0.0.9"
+schema_version = 1
+description = "F# language support for Zed"
+repository = "https://github.com/nathanjcollins/zed-fsharp"
+authors = ["Nathan Collins <me@nathancollins.dev>"]
+themes = []
+icon_themes = []
+languages = ["languages/fsharp"]
+
+[lib]
+kind = "Rust"
+version = "0.7.0"
+
+[grammars.fsharp]
+repository = "https://github.com/ionide/tree-sitter-fsharp"
+rev = "c4347939b4fb439771dc2561a6923fba6a78251b"
+
+[language_servers.fsautocomplete]
+language = "FSharp"
+languages = []
+
+[language_servers.fsautocomplete.language_ids]
+
+[context_servers]
+
+[agent_servers]
+
+[slash_commands]
+
+[[capabilities]]
+kind = "process:exec"
+command = "dotnet"
+args = ["*"]

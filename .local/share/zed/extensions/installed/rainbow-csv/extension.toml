@@ -1,0 +1,41 @@
+id = "rainbow-csv"
+name = "Rainbow CSV"
+version = "1.1.0"
+schema_version = 1
+description = "Highlight CSV with different rainbow colors to make them more readable"
+repository = "https://github.com/weartist/zed-rainbow-csv"
+authors = ["Hans <weartistt@gmail.com>"]
+themes = []
+icon_themes = []
+languages = ["languages/ssv", "languages/psv", "languages/csv", "languages/tsv"]
+capabilities = []
+
+[lib]
+
+[grammars.csv]
+repository = "https://github.com/coroa/rainbow-csv-tree-sitter"
+rev = "d82f436727f74298bd587ee696dca903efc42ce6"
+path = "csv"
+
+[grammars.psv]
+repository = "https://github.com/coroa/rainbow-csv-tree-sitter"
+rev = "d82f436727f74298bd587ee696dca903efc42ce6"
+path = "psv"
+
+[grammars.ssv]
+repository = "https://github.com/coroa/rainbow-csv-tree-sitter"
+rev = "d82f436727f74298bd587ee696dca903efc42ce6"
+path = "ssv"
+
+[grammars.tsv]
+repository = "https://github.com/coroa/rainbow-csv-tree-sitter"
+rev = "d82f436727f74298bd587ee696dca903efc42ce6"
+path = "tsv"
+
+[language_servers]
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]

@@ -1,0 +1,23 @@
+id = "catppuccin"
+name = "Catppuccin"
+version = "0.2.24"
+schema_version = 1
+description = "🦀 Soothing pastel theme for Zed"
+repository = "https://github.com/catppuccin/zed"
+authors = ["Catppuccin <releases@catppuccin.com>"]
+themes = ["themes/catppuccin-mauve.json", "themes/catppuccin-no-italics-mauve.json"]
+icon_themes = []
+languages = []
+capabilities = []
+
+[lib]
+
+[grammars]
+
+[language_servers]
+
+[context_servers]
+
+[agent_servers]
+
+[slash_commands]

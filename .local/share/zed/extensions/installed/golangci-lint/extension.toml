@@ -1,0 +1,27 @@
+id = "golangci-lint"
+name = "golangci-lint"
+version = "0.2.0"
+schema_version = 1
+description = "golangci-lint support."
+repository = "https://github.com/zed-extensions/golangci-lint"
+authors = ["Jordan Gregory <jordan@j4ng5y.dev>", "Joakim Engeset <joakim.engeset@gmail.com>"]
+themes = []
+icon_themes = []
+languages = []
+
+[lib]
+kind = "Rust"
+version = "0.2.0"
+
+[grammars]
+
+[language_servers.golangci-lint]
+languages = ["Go"]
+
+[language_servers.golangci-lint.language_ids]
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]

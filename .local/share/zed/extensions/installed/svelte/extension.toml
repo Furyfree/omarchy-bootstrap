@@ -1,0 +1,31 @@
+id = "svelte"
+name = "Svelte"
+version = "0.2.10"
+schema_version = 1
+description = "Svelte support"
+repository = "https://github.com/zed-extensions/svelte"
+authors = ["Zed Industries <support@zed.dev>"]
+themes = []
+icon_themes = []
+languages = ["languages/svelte"]
+capabilities = []
+
+[lib]
+kind = "Rust"
+version = "0.7.0"
+
+[grammars.svelte]
+repository = "https://github.com/tree-sitter-grammars/tree-sitter-svelte"
+rev = "3f06f705410683adb17d146b5eca28c62fe81ba6"
+
+[language_servers.svelte-language-server]
+language = "Svelte"
+languages = []
+
+[language_servers.svelte-language-server.language_ids]
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]

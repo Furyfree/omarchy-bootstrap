@@ -40,6 +40,7 @@ omb-desktop-entries-setup
 omb-certs-install
 omb-trusted-1password-setup
 omb-defaults-setup
+omb-zed-extensions
 omb-netstack-setup
 
 

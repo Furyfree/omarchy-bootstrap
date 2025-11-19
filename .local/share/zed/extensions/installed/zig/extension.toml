@@ -1,0 +1,33 @@
+id = "zig"
+name = "Zig"
+version = "0.4.0"
+schema_version = 1
+description = "Zig support."
+repository = "https://github.com/zed-extensions/zig"
+authors = ["Allan Calix <contact@acx.dev>"]
+themes = []
+icon_themes = []
+languages = ["languages/zig"]
+capabilities = []
+
+[lib]
+kind = "Rust"
+version = "0.7.0"
+
+[grammars.zig]
+repository = "https://github.com/tree-sitter-grammars/tree-sitter-zig"
+rev = "6479aa13f32f701c383083d8b28360ebd682fb7d"
+
+[language_servers.zls]
+language = "Zig"
+languages = []
+
+[language_servers.zls.language_ids]
+
+[context_servers]
+
+[slash_commands]
+
+[indexed_docs_providers]
+
+[debug_locators.zig-locator]

@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+echo "==> [ZED] Syncing Extensions"
+
+DOTFILES_EXT_DIR="$HOME/git/omarchy-bootstrap/.local/share/zed/extensions/installed"
+TARGET_EXT_DIR="$HOME/.local/share/zed/extensions/installed"
+
+# Make sure folders exist
+mkdir -p "$TARGET_EXT_DIR"
+
+# Copy *contents*, not the folder
+cp -r "$DOTFILES_EXT_DIR/"* "$TARGET_EXT_DIR/"
+
+echo "==> [ZED] Extensions synced"
