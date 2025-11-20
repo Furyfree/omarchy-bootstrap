@@ -24,3 +24,4 @@ bind
 go
 wget
 yazi
+7zip
