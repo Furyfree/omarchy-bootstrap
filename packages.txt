@@ -25,3 +25,4 @@ go
 wget
 yazi
 7zip
+tree
