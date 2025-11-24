@@ -3,8 +3,7 @@ set -e
 
 echo "==> [Desktop Entries] Setting up custom desktop entries"
 
-# Compute repo root (one level up from scripts/)
-SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && cd .. && pwd)"
+SCRIPT_DIR="$HOME/git/omarchy-bootstrap"
 
 APPLICATION_DIR="$SCRIPT_DIR/.local/share/applications"
 ICONS_DIR="$SCRIPT_DIR/.local/share/icons"
@@ -39,9 +38,7 @@ for filename in \
     "Google Contacts.desktop" \
     "Google Messages.desktop" \
     "Google Photos.desktop" \
-    "HEY.desktop" \
-    "Impala.desktop" \
-    "WhatsApp.desktop"
+    "HEY.desktop"
 do
     f="$HOME/.local/share/applications/$filename"
     if [ -e "$f" ]; then
