@@ -6,6 +6,8 @@ echo "==> Running Omarchy Bootstrap"
 # 0. Make scripts available globally
 ./scripts/omb-scripts-install
 
+export PATH="$HOME/.local/bin:$PATH"
+
 # If bash -> source bash, if zsh -> source zsh
 if [ -n "$BASH_VERSION" ]; then
     source ~/.bashrc
