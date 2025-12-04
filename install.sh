@@ -6,6 +6,12 @@ echo "==> Running Omarchy Bootstrap"
 # 0. Make scripts available globally
 ./scripts/omb-scripts-install
 
+# If bash -> source bash, if zsh -> source zsh
+if [ -n "$BASH_VERSION" ]; then
+    source ~/.bashrc
+elif [ -n "$ZSH_VERSION" ]; then
+    source ~/.zshrc
+fi
 
 # --- ASK QUESTIONS FIRST & SAVE ANSWERS ---
 echo -n "Run AI clean? (wipe ollama, models, data) [y/N]: "
